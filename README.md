@@ -9,8 +9,8 @@ To run this commit instal forked version of funda scraper.
 ```
 
 Arguments list (bolded are required):
-**  - '-t' - time interval between messeges (in minutes).
-  - '-a' - area to search.
-  - '-m' - email of receiver.**
+  - **'-t' - time interval between messeges (in minutes).**
+  - **'-a' - area to search.**
+  - **'-m' - email of receiver.**
   - '-n' - number of pages to search.
   - '-r' - additional range to search.
