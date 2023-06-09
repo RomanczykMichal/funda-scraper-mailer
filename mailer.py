@@ -23,6 +23,5 @@ class Mailer:
     def prepare_body(data):
             list = ""
             for index, row in data.iterrows():
-                #list += (f'https://www.funda.nl/huur/{row["city"]}/{row["house_type"]}-{row["house_id"]}-{str(row["address"]).lower().replace(" ", "-")}\n')
                 list += f'{row["url"]}\n'
             return list

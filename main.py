@@ -11,7 +11,6 @@ import os
 
 EMAIL_SENDER = os.environ["FS_EMAIL_SENDER"]
 EMAIL_PASS = os.environ["FS_EMAIL_PASS"]
-SUBJECT = 'Nowe oferty mieszkan - Holandia'
 CONFIG_PATH = './config.ini'
 LAST_DATE_FOUND = '1970-01-01 00:00:00.000000'
 
@@ -22,6 +21,7 @@ def init_parser():
     parser.add_argument("-r", "--range", type=int, default=0, help='additional area to search.')
     parser.add_argument("-n", "--n_pages", type=int, default=3, help='number of pages to search.')
     parser.add_argument("-m", "--mail", type=str, required=True, help='email of receiver.')
+    parser.add_argument("-s", "--subject", type=str, default='New Ads funda.nl', help='subject of the email.')
     return parser.parse_args()
 
 def init_config():
@@ -79,7 +79,7 @@ if __name__ == "__main__":
             last_date_found = filtered_scraped_data.iloc[0]['date_list']
             set_config_pair(config, 'data', 'last_date_found', str(last_date_found))
             write_config_file(config)
-            Mailer.send_mail(EMAIL_SENDER, args.mail, EMAIL_PASS, SUBJECT, filtered_scraped_data)
+            Mailer.send_mail(EMAIL_SENDER, args.mail, EMAIL_PASS, args.subject, filtered_scraped_data)
             logger.info('*** Wysłano wiadomość email ***')
         else:
             logger.info('*** Nie znaleziono nowych ogłoszeń ***')
